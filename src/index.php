@@ -62,4 +62,19 @@ if (isset($_POST['email'])) {
     } else {
         echo "Mail is gestuurd!";
     }
-} ?>
+}
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+// create a log channel
+$log = new Logger('info.log');
+$log->pushHandler(new StreamHandler('C:\Users\lucas\Documents\GitHub\klachtbehandeling', Logger::WARNING));
+
+// add records to the log
+$log->warning('Foo');
+$log->error('Bar');
+
+
+
+?>
