@@ -1,5 +1,7 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 ?>
 <!doctype html>
 <html lang="nl">
@@ -54,6 +56,7 @@ if (isset($_POST['email'])) {
     $mail->isHTML(true);
     $mail->From = "Lucasdh2003@gmail.com";
     $mail->FromName = "LDH-support";
+    $mail->addReplyTo("Lucasdh2003@gmail.com");
     $mail->msgHTML($klacht);
     $mail->addAddress($email);
     $mail->AddCC("40188047@roctilburg.nl");
@@ -64,16 +67,17 @@ if (isset($_POST['email'])) {
     }
 }
 
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
+$mail->isHTML(true);
+$mail->subject = $onderwerp;
 
 // create a log channel
-$log = new Logger('info.log');
-$log->pushHandler(new StreamHandler('C:\Users\lucas\Documents\GitHub\klachtbehandeling', Logger::WARNING));
+$log = new Logger('name');
+$log->pushHandler(new StreamHandler('path/to/your.log', Logger::WARNING));
 
 // add records to the log
-$log->warning('Foo');
-$log->error('Bar');
+$log->$_POST["naam"];
+$log->$_POST["naam"];
+$log->$_POST["naam"];
 
 
 
