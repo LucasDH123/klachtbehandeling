@@ -54,9 +54,15 @@ if (isset($_POST['email'])) {
     $mail->Username = 'aae80984fe9b5f';
     $mail->Password = '00e8685ea1b58e';
     $mail->isHTML(true);
+    $mail->body = $klacht ;
+    $mail->AltBody = "Dit is de standaard body.";
     $mail->From = "Lucasdh2003@gmail.com";
     $mail->FromName = "LDH-support";
-    $mail->addReplyTo("Lucasdh2003@gmail.com");
+    try {
+        $mail->addReplyTo("Lucasdh2003@gmail.com");
+    } catch (\PHPMailer\PHPMailer\Exception $e) {
+
+    }
     $mail->msgHTML($klacht);
     $mail->addAddress($email);
     $mail->AddCC("40188047@roctilburg.nl");
@@ -75,10 +81,7 @@ $log = new Logger('name');
 $log->pushHandler(new StreamHandler('path/to/your.log', Logger::WARNING));
 
 // add records to the log
-$log->$_POST["naam"];
-$log->$_POST["naam"];
-$log->$_POST["naam"];
+$log->warning($naam. " ". $klacht);
+// echo "message has been sent";
 
-
-
-?>
+    ?>
